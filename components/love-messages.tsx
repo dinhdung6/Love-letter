@@ -1,18 +1,20 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useUserId } from '@/hooks/use-user-id'
+import { useAuth } from '@/hooks/use-auth'
 import { useMessages } from '@/hooks/use-messages'
 import { MessageSidebar } from '@/components/message-sidebar'
 import { Envelope } from '@/components/envelope'
 import { ProgressBar } from '@/components/progress-bar'
 import { MessageControls } from '@/components/message-controls'
 import { AnimatedBackground } from '@/components/animated-background'
-import { Heart, Sparkles, Menu, X } from 'lucide-react'
+import { LoginPage } from '@/components/login-page'
+import { Heart, Sparkles, Menu, X, LogOut } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function LoveMessages() {
-  const { userId, isLoading: userLoading } = useUserId()
+  const { isLoggedIn, username, isLoading: userLoading, login, logout } = useAuth()
+  const userId = isLoggedIn ? username : null
   const {
     openedMessages,
     currentMessage,
@@ -68,6 +70,11 @@ export function LoveMessages() {
     )
   }
 
+  // Show login page if not logged in
+  if (!isLoggedIn) {
+    return <LoginPage onLogin={login} />
+  }
+
   const allOpened = openedMessages.length >= 100
 
   return (
@@ -108,7 +115,25 @@ export function LoveMessages() {
       {/* Main content */}
       <main className="flex-1 flex flex-col min-h-screen p-4 md:p-8 relative z-10">
         {/* Header */}
-        <header className="text-center mb-8">
+        <header className="text-center mb-8 relative">
+          {/* User info and logout button */}
+          <div className="absolute right-0 top-0">
+            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-md rounded-full px-3 py-2 shadow-md border border-white/50">
+              <span className="text-sm text-gray-600 hidden sm:inline">
+                {username}
+              </span>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={logout}
+                className="h-8 w-8 text-gray-500 hover:text-rose-500 hover:bg-rose-50"
+                title="Đăng xuất"
+              >
+                <LogOut className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+          
           <div className="inline-block bg-white/60 backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg border border-white/50">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Sparkles className="w-6 h-6 text-amber-400" />
