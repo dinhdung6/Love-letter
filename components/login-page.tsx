@@ -26,7 +26,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
     const result = onLogin(username, password)
     if (!result.success) {
-      setError(result.error || 'Dang nhap that bai')
+      setError(result.error || 'Đăng nhập thất bại')
     }
     setIsSubmitting(false)
   }
@@ -43,10 +43,10 @@ export function LoginPage({ onLogin }: LoginPageProps) {
               <Heart className="w-10 h-10 text-white fill-white" />
             </div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-              100 Ly Do Anh Yeu Em
+              100 lý do anh yêu em
             </h1>
             <p className="text-gray-500 mt-2 text-sm">
-              Dang nhap de xem tin nhan yeu thuong
+              Đăng nhập để xem những bức thư của Sữa nhé công chúa An An!
             </p>
           </div>
 
@@ -54,7 +54,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
               <label htmlFor="username" className="text-sm font-medium text-gray-700">
-                Ten dang nhap
+                Tên đăng nhập
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -63,7 +63,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Nhap ten dang nhap"
+                  placeholder="Nhập tên đăng nhập"
                   className="pl-10 h-12 bg-white/50 border-gray-200 focus:border-pink-400 focus:ring-pink-400"
                   required
                 />
@@ -72,7 +72,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
             <div className="space-y-2">
               <label htmlFor="password" className="text-sm font-medium text-gray-700">
-                Mat khau
+                Mật khẩu
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -81,7 +81,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Nhap mat khau"
+                  placeholder="Nhập mật khẩu"
                   className="pl-10 h-12 bg-white/50 border-gray-200 focus:border-pink-400 focus:ring-pink-400"
                   required
                 />
@@ -102,10 +102,10 @@ export function LoginPage({ onLogin }: LoginPageProps) {
               {isSubmitting ? (
                 <div className="flex items-center gap-2">
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  Dang dang nhap...
+                  Đang đăng nhập...
                 </div>
               ) : (
-                'Dang nhap'
+                'Đăng nhập'
               )}
             </Button>
           </form>

@@ -49,7 +49,7 @@ export function useAuth() {
       return { success: true }
     }
 
-    return { success: false, error: 'Sai ten dang nhap hoac mat khau' }
+    return { success: false, error: 'Sai tên đăng nhập hoặc mật khẩu' }
   }, [])
 
   const logout = useCallback(() => {

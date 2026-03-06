@@ -29,7 +29,7 @@ export function ProgressBar({ opened, total }: ProgressBarProps) {
       </div>
       {opened === total && (
         <p className="text-center mt-2 text-sm text-[#A8E6CF] font-medium animate-pulse">
-          🎉 You have unlocked all messages! 🎉
+          🎉 Princessa have unlocked all messages! 🎉
         </p>
       )}
     </div>
