@@ -118,7 +118,7 @@ export function LoveMessages() {
               <Sparkles className="w-6 h-6 text-amber-400" />
             </div>
             <p className="text-gray-600 text-sm md:text-base">
-              Mỗi tin nhắn là một lý do tại sao anh yêu em. <br /> Hãy mở từng tin nhắn để khám phá nhé!
+              Mỗi tin nhắn là một lý do tại sao anh yêu em. <br /> Hãy mở từng tin nhắn để khám phá nhé! <br /> Mở size màn hình 80% cho hiệu quả đẹp nhất nha!
             </p>
           </div>
         </header>
